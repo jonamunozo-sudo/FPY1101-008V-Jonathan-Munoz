@@ -4,7 +4,7 @@ prestamos_activos = 0
 
 print("¡Bienvenido al sistema de gestion de prestamos de la Biblioteca Central!")
 while True:
-    print("\n===MENÚ PRINCIPAL===")
+    print("\n===MENU PRINCIPAL===")
     print("1. Libros disponibles")
     print("2. Realizar prestamo")
     print("3. Devolver prestamo")
@@ -37,7 +37,7 @@ while True:
                 else:
                     stock_disponible -= cantidad
                     prestamos_activos += cantidad
-                    print(f"¡Préstamo exitoso! Se han prestado {cantidad} libro(s).")
+                    print(f"¡Prestamo exitoso! Se han prestado {cantidad} libro(s).")
                     break
             except:
                 print("¡Error de entrada! Debe ingresar un número entero positivo.")
@@ -70,4 +70,4 @@ while True:
         break 
         
     else:
-        print("¡Opción no válida! Seleccione un número del 1 al 5.")
+        print("¡Opcion no valida! Seleccione un numero del 1 al 5.")
