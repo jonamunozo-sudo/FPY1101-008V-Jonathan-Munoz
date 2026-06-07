@@ -1,51 +1,44 @@
-# Valores
-
-Valor_Medicamento = 60000
-Valor_Despacho = 8000
-
-continuar = True
-while continuar:
-    try:
-        edad = int(input("Ingrese su edad: "))
-        if edad > 0:  
-            continuar = False
+def registrar_medicos():
+    print(".... SISTEMA DE REGISTRO - HOSPITAL CENTRAL METROPOLITANO ....\n")
+    while True:
+        try:
+            cantidad = int(input("Ingrese la cantidad de medicos que desea registrar: "))
+            if cantidad > 0:
+                break
+            else:
+                print("Registro medico invalido. Ingresa un entero positivo para continuar.")
+        except: 
+            print("Registro medico invalido. Ingresa un entero positivo para continuar.")
+    especialistas_senior = 0
+    residentes_junior = 0
+    for i in range(1, cantidad + 1):
+        print(f"\n--- Registro del Médico #{i} ---")
+        while True:
+            nombre = input("Nombre Profesional (minimo 6 caracteres, sin espacios): ").strip()
+            if len(nombre) >= 6 and " " not in nombre:
+                break
+            else:
+                print("Nombre invalido. Debe tener al menos 6 caracteres y no contener espacios.")
+        while True:
+            try:
+                experiencia = int(input(f"Años de experiencia clinica de {nombre}: "))
+                if experiencia >= 0:
+                    break
+                else:
+                    print("¡Error clinico!.Ingresa un numero entero positivo para la experiencia.")
+            except:  # Captura cualquier error de entrada
+                print("¡Error clinico!. Ingresa un numero entero positivo para la experiencia.")
+        if experiencia > 5:
+            print(f"-> Clasificación: Especialista Senior")
+            especialistas_senior += 1
         else:
-            print("Debe ingresar una edad valida.")
-    except ValueError:
-        print("Debe ingresar un numero entero.")
+            print(f"-> Clasificación: Residente Junior")
+            residentes_junior += 1
+    print("\n.....................................................")
+    print("..................RESUMEN DE REGISTRO..................")
+    print(".......................................................")
+    print(f"El hospital cuenta con {especialistas_senior} Especialistas Senior y {residentes_junior} ¡Residentes Junior! ¡Sistema listo para operar!")
+    print("=======================================================")
 
-continuar = True
-while continuar:
-    tramo_cliente = input("Ingrese su tramo (A, B, C o D): ").upper()
-    if tramo_cliente in ["A", "B", "C", "D"]:
-        continuar = False
-    else:
-        print("Debe ingresar una opcion valida (A, B, C o D).")
-
-if edad <= 30:
-    if tramo_cliente in ["A", "B"]:
-        Porcentaje_Med = 18
-    else:
-        Porcentaje_Med = 12
-elif 31 <= edad <= 60:
-    if tramo_cliente in ["A", "B"]:
-        Porcentaje_Med = 12
-    else:
-        Porcentaje_Med = 8
-else: 
-    Porcentaje_Med = 0
-
-Porcentaje_Despacho = 0
-if tramo_cliente in ["A", "B"]:
-    Porcentaje_Despacho += 10  
-    if edad >= 55:
-        Porcentaje_Despacho += 5  
-
-Descuento_Med = Valor_Medicamento * (Porcentaje_Med / 100)
-medicamento_final = Valor_Medicamento - Descuento_Med
-
-Descuento_Despacho = Valor_Despacho * (Porcentaje_Despacho / 100)
-Despacho_final = Valor_Despacho - Descuento_Despacho    
-
-print(f"El valor de medicamentos es: {int(medicamento_final)}")
-print(f"El valor del despacho es: {int(Despacho_final)}")
+if __name__ == "__main__":
+    registrar_medicos()  
