@@ -38,7 +38,7 @@ def registrar_medicos():
     print("..................RESUMEN DE REGISTRO..................")
     print(".......................................................")
     print(f"El hospital cuenta con {especialistas_senior} Especialistas Senior y {residentes_junior} ¡Residentes Junior! ¡Sistema listo para operar!")
-    print("=======================================================")
+    print(".......................................................")
 
 if __name__ == "__main__":
     registrar_medicos()  
